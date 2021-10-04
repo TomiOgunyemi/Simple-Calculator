@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<div class="card card-body bg-light ">
+    <input type="text" id="val1" class="form-control m-2 mx-auto w-50" placeholder="What do you want?">
+    <input type="text" id="val2" class="form-control m-2 mx-auto w-50" placeholder="Paradise">
+     <button class="btn btn-primary text-white mx-auto" onclick="tomi()">Tomisin</button >
+</div>
+<script>
+      function tomi(){
+    var a=document.getElementById("val1").value
+    document.getElementById("val1").value=""
+    document.getElementById("val2").value = document.getElementById("val2").value + a
+ }
+</script> 
+
+  <style type="text/css">
+    
+        </style>
+<body>
+	<div>
+        <table>
+            <tr>
+                <th colspan="4">
+                    <input type="text" id="output"><br>
+                </th>
+            </tr>
+            <tr>
+                <td><button onclick="pressMe()">%</button></td>
+                <td><button onclick="clearScreen()">CE</button></td>
+                <td><button onclick="clearScreen()">C</button></td>
+                <td><button onclick="pressMe()"><img src="java2/edit.JPG" alt=""></button></td>
+            </tr>
+            <tr>
+                <td><button  onclick="oneX()"><img src="java2/over x.JPG" alt=""></button></td>
+                <td><button onclick="powerOf()"><img src="java2/x_square.JPG" alt=""></button></td>
+                <td><button onclick="squareRoot()" ><img src="java2/square_star.JPG" alt=""></button></td>
+                <td><button onclick="pressSign('/')">/</button></td>
+            </tr>
+             <tr>
+                <td><button class="bt_num" onclick="pressNumber(7)">7</button></td>
+                <td><button class="bt_num" onclick="pressNumber(8)">8</button></td>
+                <td><button class="bt_num" onclick="pressNumber(9)">9</button></td>
+                <td><button onclick="pressSign('*')">x</button></td>
+            </tr>
+            <tr>
+                <td><button class="bt_num" onclick="pressNumber(4)">4</button></td>
+                <td><button class="bt_num" onclick="pressNumber(5)">5</button></td>
+                <td><button class="bt_num" onclick="pressNumber(6)">6</button></td>
+                <td><button onclick="pressSign('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="bt_num" onclick="pressNumber(1)">1</button></td>
+                <td><button class="bt_num" onclick="pressNumber(2)">2</button></td>
+                <td><button class="bt_num" onclick="pressNumber(3)">3</button></td>
+                <td><button onclick="pressSign('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="pressMe()"><img src="plus_minus.JPG" alt=""></button></td>
+                <td><button class="bt_num" onclick="pressNumber(0)">0</button></td>
+                <td><button onclick="pressMe()">.</button></td>
+                <td><button onclick="calc()">=</button></td>
+            </tr> 
+        </table>
+    </div>
+
+     <script>
+    	var first_value,second_value, operator,result;
+
+        function oneX(){
+            var fn = document.getElementById("output").value;
+            document.getElementById("output").value = 1/fn
+        }
+
+        function squareRoot(){
+            var fn = document.getElementById("output").value;
+            document.getElementById("output").value = Math.sqrt(fn)
+        }
+
+        function powerOf(){
+            var fn =  document.getElementById("output").value;
+            document.getElementById("output").value =  fn * fn
+        }
+
+    	function pressNumber(num){
+    		first_value=num
+    		document.getElementById("output").value+=num
+    	}
+    	function pressSign(op){
+    		if (document.getElementById("output").value==""&& op!="-") {
+
+    			return
+    		}
+    		second_value=document.getElementById("output").value
+    		second_value=Number(second_value)
+			operator=op
+			document.getElementById("output").value+=op
+    	
+    	}
+    	function calc(){
+    		 if (operator == '+'){
+                result = (second_value) + (first_value)
+            }else if (operator == '-'){
+                result = (second_value) -(first_value)
+            }else if (operator == '/'){
+                result = (second_value) / (first_value)
+            }else if (operator == '*'){
+                result = (second_value) * (first_value)
+            }else {
+                result = 'error'
+            }
+           
+           document.getElementById("output").value = result
+        }
+
+    	function clearScreen(){
+    		document.getElementById("output").value=""
+    	}
+
+    	// function pressMe(){
+    		// var screen=document.getElementById("output").value;
+    		// var del=screen.slice(0,-1)
+    		// document.getElementById("output").value=del
+
+    		// use any of the methods
+
+    		function pressMe(){
+    		var screen=document.getElementById("output").value;
+    		var len= screen.length;
+			var del=screen.substr(0,len -1)
+    		document.getElementById("output").value=del
+    		console.log(del)
+    			}
+
+    </script>
+    
+</body>
+</html>
